@@ -1,6 +1,7 @@
 import requests
 
 
+<<<<<<< HEAD
 def get_summary(title: str) -> str:
     """
     Takes the given Wikipedia title and returns a short summary
@@ -60,6 +61,8 @@ def get_links(title: str) -> list:
     return links
 
 
+=======
+>>>>>>> 4e4afd4 (added way to call the filter feature JS)
 def get_info(title: str) -> dict:
     """
     Takes the given Wikipedia title and returns a dictionary of useful data
@@ -72,7 +75,20 @@ def get_info(title: str) -> dict:
 
     """
     info = {}
+<<<<<<< HEAD
     info['summary'] = get_summary(title)
     info['photos'] = get_photos(title)
     info['links'] = get_links(title)
     return info
+=======
+    info['summary'] = summary.json()['extract']
+    media = requests.get(f'https://en.wikipedia.org/api/rest_v1/page/media-list/{title}')
+    info['media-list'] = []
+    for photo in media.json()['items']:
+        if photo['type'] == 'image':
+            info['media-list'].append(photo['srcset'][0]['src'])
+    print(info['media-list'])
+
+
+get_info('Apple')
+>>>>>>> 4e4afd4 (added way to call the filter feature JS)
