@@ -74,7 +74,7 @@ def get_related(title: str) -> list:
 
     Returns:
         list - List of links to related Wikipedia pages
-        
+
     """
     raw = requests.get(f'https://en.wikipedia.org/api/rest_v1/page/related/{title}')
     related = []
@@ -97,11 +97,16 @@ def get_info(title: str) -> dict:
     """
     info = {}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    info['title'] = title
+>>>>>>> 9af42a8 (Feat: Add title to info dictionary)
     info['summary'] = get_summary(title)
     info['photos'] = get_photos(title)
     info['links'] = get_links(title)
     info['related'] = get_related(title)
     return info
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     info['summary'] = summary.json()['extract']
@@ -119,3 +124,5 @@ get_info('Apple')
 
 get_info('Apple')
 >>>>>>> bd95625 (Feat: Add related field to info dictionary)
+=======
+>>>>>>> 9af42a8 (Feat: Add title to info dictionary)
