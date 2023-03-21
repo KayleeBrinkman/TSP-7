@@ -1,6 +1,6 @@
-#!python3
+#!/usr/bin/env python3
 #####################################################
-# File: webscraper_gui.py                           #
+# File: webscraper_gui.py.py                           #
 # Date: 03/11/2023                                  #
 # Course: CS3141                                    #
 # Author(s): Evan Vandermate (evanderm)             #

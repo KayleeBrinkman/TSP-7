@@ -23,7 +23,7 @@ setuptools.setup(
     ],
     package_dir={"": "src"},
     scripts=[
-        'bin/webscraper_gui',
+        'bin/webscraper_gui.py',
     ],
     include_package_data=True,
     packages=setuptools.find_packages(where="src"),
