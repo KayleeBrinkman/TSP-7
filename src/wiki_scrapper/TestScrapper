@@ -1,0 +1,14 @@
+# Import package
+import wikipediaapi
+import wiki_scrapper.filter as wikifilter
+import wiki_scrapper.ScrappeAndCompare as wikiScrappeAndCompare
+import re
+import difflib
+
+def main():
+    originalTitle = 'Anime'
+    title = 'Dragon Ball'
+    comaparableText = wikiScrappeAndCompare.scrappe(originalTitle, title)
+
+if __name__ == "__main__":
+    main()
