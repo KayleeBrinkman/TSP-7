@@ -13,10 +13,6 @@ py -m pip install --upgrade pip
 ```bash
 pip install --upgrade pip setuptools wheel -y
 ```
-- Install tkinter package
-```bash
-pip install tk
-```
 - Install Git
   - https://gitforwindows.org/
 - Install wiki-scrapper and all dependencies using pip install.
