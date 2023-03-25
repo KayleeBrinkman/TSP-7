@@ -25,8 +25,7 @@ class scrapperGUI(tk.Tk):
         self.protocol("WM_DELETE_WINDOW", self._quit)
 
         # Vars
-        self.searchterm = tk.StringVar(value="Enter Search Term...")
-        self.sortBySelection = tk.StringVar(value="Relevance")
+        self.searchterm = tk.StringVar(value="Enter Wiki Title...")
         
         # Frames
         self.frm_searchTools    = tk.LabelFrame(master=self, text="Search Tools")
@@ -38,14 +37,11 @@ class scrapperGUI(tk.Tk):
         self.searchtermEntry        = tk.Entry(master=self.frm_searchTools, textvariable=self.searchterm,
                                                foreground='#c7c7cd')
         self.searchButton           = tk.Button(master=self.frm_searchTools, text="Search", command=self.search)
-        self.sortBySelectionLabel   = tk.Label(master=self.frm_searchTools, text="Sort by:")
-        self.sortBySelectionMenu    = ttk.Combobox(master=self.frm_searchTools, textvariable=self.sortBySelection,
-                                                   values=["Relevance", "Date"], state='readonly')
+
         # Arrange widgets
         self.searchtermEntry.grid(row=0, column=0, sticky='news')
         self.searchButton.grid(row=0, column=1, sticky='nws')
-        self.sortBySelectionLabel.grid(row=1, column=0, sticky='nes')
-        self.sortBySelectionMenu.grid(row=1, column=1, sticky='news')
+
         # Widget callbacks
         self.searchtermEntry.bind("<FocusIn>", self.defaultText)
 
