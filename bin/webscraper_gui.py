@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-#####################################################
-# File: webscraper_gui.py.py                           #
-# Date: 03/11/2023                                  #
-# Course: CS3141                                    #
-# Author(s): Evan Vandermate (evanderm)             #
-# Desc: Created the main webscrapper gui.           #
-# Last Updated:                                     #
-#       evanderm @ 03/11/2023 - Initial document    #
-#####################################################
+#############################################################
+# File: webscraper_gui.py.py                                #
+# Date: 03/11/2023                                          #
+# Course: CS3141                                            #
+# Author(s): Evan Vandermate (evanderm)                     #
+# Desc: Created the main webscrapper gui.                   #
+# Last Updated:                                             #
+#       evanderm @ 03/11/2023 - Initial document            #
+#       evanderm @ 03/25/2023 - Implement wiki libraries to #
+#                               search for related pages.   #
+#############################################################
 import tkinter as tk
 from tkinter import ttk
+import wiki_scrapper.search_results as wikiresults
+import wikipediaapi
+import webbrowser
 
 # Web Scrapper GUI Main Class
 class scrapperGUI(tk.Tk):
@@ -25,7 +30,10 @@ class scrapperGUI(tk.Tk):
         self.protocol("WM_DELETE_WINDOW", self._quit)
 
         # Vars
+        self.relatedPages = None
+        self.wiki = wikipediaapi.Wikipedia('en')
         self.searchterm = tk.StringVar(value="Enter Wiki Title...")
+        self.resultsAmount = tk.StringVar(value="5")
         
         # Frames
         self.frm_searchTools    = tk.LabelFrame(master=self, text="Search Tools")
@@ -34,19 +42,29 @@ class scrapperGUI(tk.Tk):
         self.frm_results.grid(row=0, column=1, sticky='news')
         
         # Widgets for "frm_searchTools" frame
-        self.searchtermEntry        = tk.Entry(master=self.frm_searchTools, textvariable=self.searchterm,
+        self.searchtermEntry    = tk.Entry(master=self.frm_searchTools, textvariable=self.searchterm,
                                                foreground='#c7c7cd')
-        self.searchButton           = tk.Button(master=self.frm_searchTools, text="Search", command=self.search)
+        self.searchButton       = tk.Button(master=self.frm_searchTools, text="Search", command=self.search)
+        self.resultsAmountLabel = tk.Label(master=self.frm_searchTools, text="Amount of page: ")
+        self.resultsAmountEntry = ttk.Combobox(master=self.frm_searchTools, textvariable=self.resultsAmount,
+                                               values=['1', '5', '10', '20'])
 
         # Arrange widgets
         self.searchtermEntry.grid(row=0, column=0, sticky='news')
         self.searchButton.grid(row=0, column=1, sticky='nws')
+        self.resultsAmountLabel.grid(row=1, column=0, sticky='nes')
+        self.resultsAmountEntry.grid(row=1, column=1, sticky='news')
 
         # Widget callbacks
         self.searchtermEntry.bind("<FocusIn>", self.defaultText)
 
         # Widgets for "frm_results" frame
-        self.resultsTree = ttk.Treeview(master=self.frm_results)
+        self.resultsTree = ttk.Treeview(master=self.frm_results, columns=['title', 'similarity', 'url'], show='headings')
+        # Setup resultsTree
+        self.resultsTree.heading('title', text='Title')
+        self.resultsTree.heading('similarity', text='Similarity')
+        self.resultsTree.heading('url', text='URL')
+        self.resultsTree.bind("<Double-Button-1>", self.onResultsClick)
         # Arrange widgets
         self.resultsTree.grid(row=0, column=0, sticky='news')
 
@@ -61,7 +79,7 @@ class scrapperGUI(tk.Tk):
     # All tasks here will run every frame update.   #
     #################################################
     def main(self):
-        # TODO: Tasks to update periodically (not implemented yet)
+        # Tasks to update periodically (not implemented yet)
 
         # Loop
         self.update_idletasks()
@@ -74,8 +92,58 @@ class scrapperGUI(tk.Tk):
     # Execute webscrapping for entered term.    #
     #############################################
     def search(self):
-        # TODO: implement search function
+        # Get wiki page from title
+        page = self.wiki.page(self.searchterm.get())
+
+        # Check if page exists
+        if not page.exists():
+            print(f"No wiki page found with title [{self.searchterm.get()}]")
+            return
+
+        # Find related pages
+        self.relatedPages = wikiresults.related_pages(self.searchterm.get(), int(self.resultsAmount.get()))
+
+        # Display results
+        self.updateResults()
         print(f"Search for [{self.searchterm.get()}]")
+        print(f"Results: {self.relatedPages}")
+
+    #################################################
+    # updateResults()                               #
+    #-----------------------------------------------#
+    # Updates the results table with similar pages. #
+    #################################################
+    def updateResults(self):
+        # Create list of results
+        results = []
+        for similarity in self.relatedPages:
+            title = self.relatedPages[similarity]
+            results.append((title, str(similarity), f"https://en.wikipedia.org/wiki/{title[0]}"))
+            if len(results) >= int(self.resultsAmount.get()):
+                break
+
+        # Clear old results
+        for item in self.resultsTree.get_children():
+            self.resultsTree.delete(item)
+
+        # Add results to table
+        for result in results:
+            self.resultsTree.insert('', tk.END, values=result)
+
+    #################################################
+    # onResultsClick()                              #
+    #-----------------------------------------------#
+    # Callback for double-clicking on table entry.  #
+    #################################################
+    def onResultsClick(self, event):
+        # Get selected result
+        item = self.resultsTree.selection()[0]
+
+        # Get selected url
+        url = self.resultsTree.item(item)['values'][2]
+
+        # Open url
+        webbrowser.open_new_tab(url)
 
     #########################################
     # defaultText()                         #

@@ -9,7 +9,7 @@ import wikipediaapi
 import re
 import difflib
 
-from page_getter import *
+from wiki_scrapper.page_getter import *
 
 
 def related_pages(title: str, size: int) -> dict:
@@ -101,13 +101,12 @@ def compare(a: str, b: str) -> int:
     score = counter/len(textOther)*100      # score represents the percentage of words in article b that match article a
     return round(score, 2)
 
-
-# unit testing/print debugging
-print(compare('anime', 'Dragon Ball'))
-print(compare('fruit', 'apple'))
-testdict = {1: ['help'], 2: ['ugh'], 3: ['i\'m going to start sobbing']}
-print(add(testdict, 1, 'please work for the love of god'))
-print(add(testdict, 2, 'ugh'))
-print(related_pages('apple', 50))
-
+if __name__ == "__main__":
+    # unit testing/print debugging
+    print(compare('anime', 'Dragon Ball'))
+    print(compare('fruit', 'apple'))
+    testdict = {1: ['help'], 2: ['ugh'], 3: ['i\'m going to start sobbing']}
+    print(add(testdict, 1, 'please work for the love of god'))
+    print(add(testdict, 2, 'ugh'))
+    print(related_pages('apple', 50))
 
