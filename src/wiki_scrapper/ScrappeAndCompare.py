@@ -33,13 +33,13 @@ def scrappe(originalTitle, title):
     textOther = wikiFilterOut.filterOutCommonWords(text2)
 
     # COMPARE THE TWO TEXTS, WORD BY WORD
-    score = 0
-    for x in textOriginal:
-        for y in textOther:
-            if x == y:
-                score = score+1
-    otherTextSize = len(textOther)
-    return (score/otherTextSize)
+    matcher = difflib.SequenceMatcher(a=textOriginal, b=textOther)
+    counter = 0
+    for match in matcher.get_matching_blocks():
+        counter = counter+1
+
+    score = counter/len(textOther)*100      # score represents the percentage of words in article b that match article a
+    return round(score, 2)
 
 if __name__ == "__main__":
     main()
