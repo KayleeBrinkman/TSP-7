@@ -38,7 +38,8 @@ def scrappe(originalTitle, title):
         for y in textOther:
             if x == y:
                 score = score+1
-    return score
+    otherTextSize = len(textOther)
+    return (score/otherTextSize)
 
 if __name__ == "__main__":
     main()
