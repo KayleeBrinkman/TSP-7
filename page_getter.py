@@ -98,7 +98,12 @@ def get_info(title: str) -> dict:
     info = {}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+    if title[:5] == 'https':
+        title = title[title.find('wiki/') + 5:]
+>>>>>>> 9c093b3 (Feat: Add ability to get info from either link or title)
     info['title'] = title
 >>>>>>> 9af42a8 (Feat: Add title to info dictionary)
     info['summary'] = get_summary(title)
@@ -106,6 +111,7 @@ def get_info(title: str) -> dict:
     info['links'] = get_links(title)
     info['related'] = get_related(title)
     return info
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -126,3 +132,7 @@ get_info('Apple')
 >>>>>>> bd95625 (Feat: Add related field to info dictionary)
 =======
 >>>>>>> 9af42a8 (Feat: Add title to info dictionary)
+=======
+
+get_info('https://en.wikipedia.org/wiki/Apple')
+>>>>>>> 9c093b3 (Feat: Add ability to get info from either link or title)
