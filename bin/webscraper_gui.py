@@ -36,10 +36,10 @@ class scrapperGUI(tk.Tk):
         self.resultsAmount = tk.StringVar(value="5")
         
         # Frames
+        self.frm_results = tk.LabelFrame(master=self, text="Results")
         self.frm_searchTools    = tk.LabelFrame(master=self, text="Search Tools")
-        self.frm_results        = tk.LabelFrame(master=self, text="Results")
-        self.frm_searchTools.grid(row=0, column=0, sticky='news')
-        self.frm_results.grid(row=0, column=1, sticky='news')
+        self.frm_results.grid(row=0, column=0, sticky='news')
+        self.frm_searchTools.grid(row=1, column=0, sticky='news')
         
         # Widgets for "frm_searchTools" frame
         self.searchtermEntry    = tk.Entry(master=self.frm_searchTools, textvariable=self.searchterm,
