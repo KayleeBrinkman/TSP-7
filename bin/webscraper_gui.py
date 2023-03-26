@@ -45,7 +45,7 @@ class scrapperGUI(tk.Tk):
         self.searchtermEntry    = tk.Entry(master=self.frm_searchTools, textvariable=self.searchterm,
                                                foreground='#c7c7cd')
         self.searchButton       = tk.Button(master=self.frm_searchTools, text="Search", command=self.search)
-        self.resultsAmountLabel = tk.Label(master=self.frm_searchTools, text="Amount of page: ")
+        self.resultsAmountLabel = tk.Label(master=self.frm_searchTools, text="Number of results: ")
         self.resultsAmountEntry = ttk.Combobox(master=self.frm_searchTools, textvariable=self.resultsAmount,
                                                values=['1', '5', '10', '20'])
 
