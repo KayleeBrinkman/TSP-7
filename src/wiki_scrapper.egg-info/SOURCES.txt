@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+bin/webscraper_gui.py
+src/wiki_scrapper/FilterOut.py
+src/wiki_scrapper/ScrappeAndCompare.py
+src/wiki_scrapper/__init__.py
+src/wiki_scrapper/filter.py
+src/wiki_scrapper/page_getter.py
+src/wiki_scrapper.egg-info/PKG-INFO
+src/wiki_scrapper.egg-info/SOURCES.txt
+src/wiki_scrapper.egg-info/dependency_links.txt
+src/wiki_scrapper.egg-info/requires.txt
+src/wiki_scrapper.egg-info/top_level.txt

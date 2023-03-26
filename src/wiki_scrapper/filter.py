@@ -1,7 +1,7 @@
 # This is the dictionary for the most common words used on wikipedia. We can use this for when we make comparisons between
 # Wikipedia pages, and ignore these words to not skew the similarity results.
 def main():
-    word_filter = read_text('/Users/jackson/PycharmProjects/pythonProject/commonwords.txt')
+    word_filter = read_text('/Users/Lemi/Documents/Spring 2023/CS3141 - Group Project/Software/TSP-7/src/wiki_scrapper/resources/commonwords.txt')
     print(word_filter)
 
 
