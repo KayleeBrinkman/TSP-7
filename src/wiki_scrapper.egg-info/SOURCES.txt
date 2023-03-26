@@ -6,18 +6,24 @@ setup.cfg
 setup.py
 bin/webscraper_gui.py
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/wiki_scrapper/FilterOut.py
 src/wiki_scrapper/ScrappeAndCompare.py
 src/wiki_scrapper/__init__.py
 src/wiki_scrapper/filter.py
 src/wiki_scrapper/page_getter.py
 =======
+=======
+>>>>>>> 86c5ee9590aaf3436ae7a8e87a36a4315956a42a
 src/wiki_scrapper/ScrappeAndCompare.py
 src/wiki_scrapper/__init__.py
 src/wiki_scrapper/filter.py
 src/wiki_scrapper/main.py
 src/wiki_scrapper/page_getter.py
 src/wiki_scrapper/search_results.py
+<<<<<<< HEAD
+>>>>>>> 86c5ee9590aaf3436ae7a8e87a36a4315956a42a
+=======
 >>>>>>> 86c5ee9590aaf3436ae7a8e87a36a4315956a42a
 src/wiki_scrapper.egg-info/PKG-INFO
 src/wiki_scrapper.egg-info/SOURCES.txt

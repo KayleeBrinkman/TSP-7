@@ -11,7 +11,10 @@ Requires-Python: >=3.6
 Description-Content-Type: text/markdown
 License-File: LICENSE
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 86c5ee9590aaf3436ae7a8e87a36a4315956a42a
 
 # Super Cool Wikipedia Webscraper with GUI and Also Has No Bugs (SCWWwGUIaAHNB)
 A web scraping tool that allows you to better navigate Wikipedia pages. Our solution is to use Wikipedia API and Python Tkinter libraries for the GUI.
@@ -46,4 +49,7 @@ pip install dist/wiki_scrapper-x.x.x.tar.gz --upgrade --force-reinstall
 ```bash
 webscraper_gui.py
 ```
+<<<<<<< HEAD
+>>>>>>> 86c5ee9590aaf3436ae7a8e87a36a4315956a42a
+=======
 >>>>>>> 86c5ee9590aaf3436ae7a8e87a36a4315956a42a
