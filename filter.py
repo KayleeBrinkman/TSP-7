@@ -1,9 +1,16 @@
 # This is the dictionary for the most common words used on wikipedia. We can use this for when we make comparisons between
 # Wikipedia pages, and ignore these words to not skew the similarity results.
 def main():
+<<<<<<< HEAD
     test_list = ["Hi", "The", "Michigan"]
     print(test_list)
     test_list = filter_words(test_list)
+=======
+    test_list = ["Hi", "The", "Michigan", "We", "a", "MTU"]
+    print(test_list)
+    test_list = filter_words(test_list)
+    print("List after filtering")
+>>>>>>> 3a0aedb (added result class to store previous searches JS)
     print(test_list)
 
 
