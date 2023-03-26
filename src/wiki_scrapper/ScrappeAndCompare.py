@@ -14,8 +14,8 @@ def main():
 def scrappe(originalTitle, title):
     # CALLS THE PAGE BY PAGE TITLE
     wiki = wikipediaapi.Wikipedia('en')
-    wiki1 = wiki.page(originalTitle)       
-    wiki2 = wiki.page(title)
+    wiki1 = wiki.page('anime')          
+    wiki2 = wiki.page('dragon ball')
 
     # EXTRACT THE TEXT FROM THE WIKI PAGE
     # original text
@@ -42,4 +42,3 @@ def scrappe(originalTitle, title):
 
 if __name__ == "__main__":
     main()
-

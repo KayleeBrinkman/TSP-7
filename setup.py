@@ -15,6 +15,8 @@ setuptools.setup(
     install_requires=[
         'numpy',
         'tk',
+        'requests',
+        'wikipedia-api'
      ],
     classifiers=[
         "Programming Language :: Python :: 3",

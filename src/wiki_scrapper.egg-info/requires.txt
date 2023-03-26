@@ -1,2 +1,7 @@
 numpy
 tk
+<<<<<<< HEAD
+=======
+requests
+wikipedia-api
+>>>>>>> 86c5ee9590aaf3436ae7a8e87a36a4315956a42a
