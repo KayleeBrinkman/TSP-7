@@ -67,8 +67,8 @@ def compare(a: str, b: str) -> int:
     score = counter / len(textOther) * 100      # score represents the percentage of words in article b that match article a
     return round(score, 2)
 
-
-# unit testing/print debugging
-print(compare('anime', 'Dragon Ball'))
-print(compare('fruit', 'apple'))
-print(related_pages('apple', 10))
+if __name__ == "__main__":
+    # unit testing/print debugging
+    print(compare('anime', 'Dragon Ball'))
+    print(compare('fruit', 'apple'))
+    print(related_pages('apple', 10))
