@@ -1,16 +1,15 @@
-# This is a sample Python script.
-
+# This is a sample Python script
+from result import Result
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    title = "test title"
+    articles = { "apple":10, "orange":20, "banana":5 }
+    test = Result(title, articles)
+    print(test)
+    test = test.sort_articles()
+    print(test)
+
