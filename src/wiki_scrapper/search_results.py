@@ -2,7 +2,7 @@ import wikipediaapi
 import re
 import difflib
 
-from page_getter import *
+from wiki_scrapper.page_getter import *
 
 
 def related_pages(title: str, count=None) -> list:
