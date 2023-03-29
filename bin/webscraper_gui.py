@@ -116,8 +116,9 @@ class scrapperGUI(tk.Tk):
     def updateResults(self):
         # Create list of results
         results = []
-        for similarity in self.relatedPages:
-            title = self.relatedPages[similarity]
+        for page in self.relatedPages:
+            title = page[0]
+            similarity = page[1]
             results.append((title, str(similarity), f"https://en.wikipedia.org/wiki/{title[0]}"))
             if len(results) >= int(self.resultsAmount.get()):
                 break
