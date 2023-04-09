@@ -86,10 +86,6 @@ def get_info(title: str) -> dict:
     info['photos'] = get_photos(title)
     info['links'] = get_links(title)
     info['related'] = get_related(title)
-<<<<<<< HEAD
-    return info
-=======
     return info
 
 get_info('https://en.wikipedia.org/wiki/Apple')
->>>>>>> 4046eef53516fd0f90f52420faf072d96059aa27

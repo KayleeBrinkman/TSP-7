@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 4046eef53516fd0f90f52420faf072d96059aa27
 class Result:
     searched_title = ""
 
@@ -39,9 +35,5 @@ class Result:
 
     def store_result(self, file_path):
         with open (file_path) as f:
-<<<<<<< HEAD
-            f.write("\n" + self.searched_title + " " + sorted(self.related_articles.items(), key = lambda x:x[1]))
-=======
             f.write("\n" + self.searched_title + " " + sorted(self.related_articles.items(), key = lambda x:x[1]))
 
->>>>>>> 4046eef53516fd0f90f52420faf072d96059aa27
