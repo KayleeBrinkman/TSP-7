@@ -4,13 +4,11 @@ import requests
 def get_summary(title: str) -> str:
     """
     Takes the given Wikipedia title and returns a short summary
-
     Args:
         title: str - Wikipedia title to retrieve data from
     
     Returns:
         str - Summary pulled from the Wikipedia page
-
     """
     raw = requests.get(f'https://en.wikipedia.org/api/rest_v1/page/summary/{title}')
     return raw.json()['extract']
@@ -19,13 +17,11 @@ def get_summary(title: str) -> str:
 def get_photos(title: str) -> list:
     """
     Takes the given Wikipedia title and returns a list of associated photos
-
     Args:
         title: str - Wikipedia title to retrieve data from
     
     Returns:
         list - List of all photos on the given Wikipedia page
-
     """
     raw = requests.get(f'https://en.wikipedia.org/api/rest_v1/page/media-list/{title}')
     photos = []
@@ -38,13 +34,11 @@ def get_photos(title: str) -> list:
 def get_links(title: str) -> list:
     """
     Takes the given Wikipedia title and returns a list of outgoing wiki links
-
     Args:
         title: str - Wikipedia title to retrieve data from
     
     Returns:
         list - List of all Wikipedia articles linked by the given page
-
     """
     raw = requests.get(f'https://en.wikipedia.org/api/rest_v1/page/html/{title}').text
     links = []
@@ -63,13 +57,10 @@ def get_links(title: str) -> list:
 def get_related(title: str) -> list:
     """
     Takes the given Wikipedia title and returns a list of related pages
-
     Args:
         title: str - Wikipedia title to retrieve data from
-
     Returns:
         list - List of links to related Wikipedia pages
-
     """
     raw = requests.get(f'https://en.wikipedia.org/api/rest_v1/page/related/{title}')
     related = []
@@ -81,15 +72,15 @@ def get_related(title: str) -> list:
 def get_info(title: str) -> dict:
     """
     Takes the given Wikipedia title and returns a dictionary of useful data
-
     Args:
         title: str - Wikipedia title to retrieve data from
     
     Returns:
         dict - Dictionary with useful data
-
     """
     info = {}
+    if title[:5] == 'https':
+        title = title[title.find('wiki/') + 5:]
     info['title'] = title
     info['summary'] = get_summary(title)
     info['photos'] = get_photos(title)
