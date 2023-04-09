@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-#############################################################
-# File: webscraper_gui.py.py                                #
-# Date: 03/11/2023                                          #
-# Course: CS3141                                            #
-# Author(s): Evan Vandermate (evanderm)                     #
-# Desc: Created the main webscrapper gui.                   #
-# Last Updated:                                             #
-#       evanderm @ 03/11/2023 - Initial document            #
-#       evanderm @ 03/25/2023 - Implement wiki libraries to #
-#                               search for related pages.   #
-#############################################################
+#####################################################################
+# File: webscraper_gui.py.py                                        #
+# Date: 03/11/2023                                                  #
+# Course: CS3141                                                    #
+# Author(s): Evan Vandermate (evanderm)                             #
+# Desc: Created the main webscrapper gui.                           #
+# Last Updated:                                                     #
+#       evanderm @ 03/11/2023 - Initial document                    #
+#       evanderm @ 03/25/2023 - Implement wiki libraries to         #
+#                               search for related pages.           #
+#       evanderm @ 04/09/2023 - New modernized GUI theme            #
+#                             - Fixed bug with related pages urls   #
+#                               being cut to only first character   #
+#####################################################################
 import tkinter as tk
 from tkinter import ttk
 import customtkinter as ctk
