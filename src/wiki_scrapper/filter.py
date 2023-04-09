@@ -16,7 +16,11 @@ def filter_words(page_words: list[str]) -> list:
     :return: a list with the 100 most common english words filtered out
     """
 
+<<<<<<< HEAD
     word_filter = read_text('resources/commonwords.txt')
+=======
+    word_filter = read_text('commonwords.txt')
+>>>>>>> 4046eef53516fd0f90f52420faf072d96059aa27
     filtered = []
     for word in page_words:
 

@@ -12,15 +12,16 @@
 #############################################################
 import tkinter as tk
 from tkinter import ttk
+import customtkinter as ctk
 import wiki_scrapper.search_results as wikiresults
 import wikipediaapi
 import webbrowser
 
 # Web Scrapper GUI Main Class
-class scrapperGUI(tk.Tk):
-    def __init__(self, *args, **kwargs):
+class scrapperGUI(ctk.CTk):
+    def __init__(self):
         # Initialize tkinter window
-        tk.Tk.__init__(self, *args, **kwargs)
+        super().__init__()
 
         # Setup window parameters
         self.title("Super Cool Wikipedia Webscraper with GUI and Also Has No Bugs (SCWWwGUIaAHNB)")
@@ -34,20 +35,19 @@ class scrapperGUI(tk.Tk):
         self.wiki = wikipediaapi.Wikipedia('en')
         self.searchterm = tk.StringVar(value="Enter Wiki Title...")
         self.resultsAmount = tk.StringVar(value="5")
-        
+
         # Frames
-        self.frm_searchTools    = tk.LabelFrame(master=self, text="Search Tools")
-        self.frm_results        = tk.LabelFrame(master=self, text="Results")
-        self.frm_searchTools.grid(row=0, column=0, sticky='news')
-        self.frm_results.grid(row=0, column=1, sticky='news')
-        
+        self.frm_results = ctk.CTkFrame(master=self)
+        self.frm_searchTools    = ctk.CTkFrame(master=self)
+        self.frm_results.grid(row=0, column=0, sticky='news')
+        self.frm_searchTools.grid(row=1, column=0, sticky='news')
+
         # Widgets for "frm_searchTools" frame
-        self.searchtermEntry    = tk.Entry(master=self.frm_searchTools, textvariable=self.searchterm,
-                                               foreground='#c7c7cd')
-        self.searchButton       = tk.Button(master=self.frm_searchTools, text="Search", command=self.search)
-        self.resultsAmountLabel = tk.Label(master=self.frm_searchTools, text="Amount of page: ")
-        self.resultsAmountEntry = ttk.Combobox(master=self.frm_searchTools, textvariable=self.resultsAmount,
-                                               values=['1', '5', '10', '20'])
+        self.searchtermEntry    = ctk.CTkEntry(master=self.frm_searchTools, textvariable=self.searchterm)
+        self.searchButton       = ctk.CTkButton(master=self.frm_searchTools, text="Search", command=self.search)
+        self.resultsAmountLabel = ctk.CTkLabel(master=self.frm_searchTools, text="Number of results: ")
+        self.resultsAmountEntry = ctk.CTkComboBox(master=self.frm_searchTools, variable=self.resultsAmount,
+                                                  values=['1', '5', '10', '20'])
 
         # Arrange widgets
         self.searchtermEntry.grid(row=0, column=0, sticky='news')
@@ -64,12 +64,12 @@ class scrapperGUI(tk.Tk):
         self.resultsTree.heading('title', text='Title')
         self.resultsTree.heading('similarity', text='Similarity')
         self.resultsTree.heading('url', text='URL')
+        self.resultsTree.column("url", minwidth=0, width=300, stretch=tk.YES)
         self.resultsTree.bind("<Double-Button-1>", self.onResultsClick)
         # Arrange widgets
         self.resultsTree.grid(row=0, column=0, sticky='news')
 
         # Initialize main-loops
-        self.after(0, func=lambda: self.main())
         self.mainloop()
 
     #################################################
@@ -116,9 +116,10 @@ class scrapperGUI(tk.Tk):
     def updateResults(self):
         # Create list of results
         results = []
-        for similarity in self.relatedPages:
-            title = self.relatedPages[similarity]
-            results.append((title, str(similarity), f"https://en.wikipedia.org/wiki/{title[0]}"))
+        for page in self.relatedPages:
+            title = page[0]
+            similarity = page[1]
+            results.append((title, str(similarity), f"https://en.wikipedia.org/wiki/{title}"))
             if len(results) >= int(self.resultsAmount.get()):
                 break
 
@@ -153,7 +154,6 @@ class scrapperGUI(tk.Tk):
     #########################################
     def defaultText(self, args):
         self.searchterm.set("")
-        self.searchtermEntry.configure(foreground='black')
 
     #####################################################
     # _quit()                                           #
