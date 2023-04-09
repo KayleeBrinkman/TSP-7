@@ -2,6 +2,7 @@
 import wikipediaapi
 import wiki_scrapper.filter as wikifilter
 import wiki_scrapper.FilterOut as wikiFilterOut
+import wiki_scrapper.compareLinks as wikiSameLinks
 import re
 import difflib
 
@@ -14,8 +15,8 @@ def main():
 def scrappe(originalTitle, title):
     # CALLS THE PAGE BY PAGE TITLE
     wiki = wikipediaapi.Wikipedia('en')
-    wiki1 = wiki.page('anime')
-    wiki2 = wiki.page('dragon ball')
+    wiki1 = wiki.page(originalTitle)
+    wiki2 = wiki.page(title)
 
     # EXTRACT THE TEXT FROM THE WIKI PAGE
     # original text
@@ -39,6 +40,18 @@ def scrappe(originalTitle, title):
         counter = counter+1
 
     score = counter/len(textOther)*100      # score represents the percentage of words in article b that match article a
+    
+    titleOgList = originalTitle.split()
+    titleList = title.split()
+    matcherTitle = difflib.SequenceMatcher(a=titleOgList, b=titleList)
+    counterTitle = 1
+    for match in matcherTitle.get_matching_blocks():
+        counterTitle = counterTitle+.05
+    score = score*counterTitle
+    
+    sameLinks = wikiSameLinks.comapreLinks(originalTitle, title)
+    score = score*(1+len(sameLinks)*0.02)
+
     return round(score, 2)
 
 if __name__ == "__main__":
