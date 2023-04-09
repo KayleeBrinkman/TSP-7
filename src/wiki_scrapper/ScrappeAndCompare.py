@@ -1,8 +1,8 @@
 # Import package
 import wikipediaapi
-import wiki_scrapper.filter as wikifilter
-import wiki_scrapper.FilterOut as wikiFilterOut
-import wiki_scrapper.compareLinks as wikiSameLinks
+import src.wiki_scrapper.filter as wikifilter
+import src.wiki_scrapper.FilterOut as wikiFilterOut
+import src.wiki_scrapper.compareLinks as wikiSameLinks
 import re
 import difflib
 

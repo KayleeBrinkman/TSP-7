@@ -2,7 +2,8 @@ import wikipediaapi
 import re
 import difflib
 
-from wiki_scrapper.page_getter import *
+from src.wiki_scrapper.page_getter import *
+from src.wiki_scrapper.ScrappeAndCompare import *
 
 
 def related_pages(title: str, count=None) -> list:
@@ -17,7 +18,7 @@ def related_pages(title: str, count=None) -> list:
     for related_page in info['related']:
         related_info = get_info(related_page)
         related_title = related_info['title']
-        score = compare(title, related_title)
+        score = scrappe(title, related_title)
         related.append((related_title, score))
     # Sort by similarity score
     related.sort(key = lambda x: x[1], reverse=True)
