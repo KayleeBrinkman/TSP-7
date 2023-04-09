@@ -1,3 +1,4 @@
+
 class Result:
     searched_title = ""
 
@@ -34,6 +35,6 @@ class Result:
         self.related_articles[title] = score
 
     def store_result(self, file_path):
-        with open (file_path) as f:
-            f.write("\n" + self.searched_title + " " + sorted(self.related_articles.items(), key = lambda x:x[1]))
+        with open (file_path, 'a') as f:
+            f.write("\n" + (self.__str__()) + "\n")
 
