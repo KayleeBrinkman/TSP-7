@@ -8,6 +8,7 @@ if __name__ == '__main__':
     print(test)
     print(test.sort_articles())
     test.store_result('storetest.txt')
-    test.store_result('storetest.txt')
+    prev = test.check_title('storetest.txt', 'test title')
+    print("prev is: "+ prev)
 
 
