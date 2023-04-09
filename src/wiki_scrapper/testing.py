@@ -69,7 +69,7 @@ def main():
     print('Links from page \'orange\': ')
     print(get_links('orange'))
     print("Links shared between the two pages: ")
-    sameLinks = compareLinks('apple', 'orange')
+    sameLinks = comapreLinks('apple', 'orange')
     sharedLinks = []
     for x in sameLinks:
         sharedLinks.append(x)
@@ -87,7 +87,7 @@ def main():
     print('Links from page \'apple\': ')
     print(get_links('apple'))
     print("Links shared between the apple and itself: ")
-    sameLinks = compareLinks('apple', 'apple')
+    sameLinks = comapreLinks('apple', 'apple')
     sharedLinks = []
     for x in sameLinks:
         sharedLinks.append(x)
