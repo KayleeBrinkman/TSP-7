@@ -16,7 +16,7 @@ def filter_words(page_words: list[str]) -> list:
     :return: a list with the 100 most common english words filtered out
     """
 
-    word_filter = read_text('resources/commonwords.txt')
+    word_filter = read_text('wiki_scrapper/resources/commonwords.txt')
     filtered = []
     for word in page_words:
 
