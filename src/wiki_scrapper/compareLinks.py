@@ -1,4 +1,4 @@
-import src.wiki_scrapper.page_getter as pageGetter
+import wiki_scrapper.page_getter as pageGetter
 
 def main():
     same_links = comapreLinks('anime', 'dragon ball')
