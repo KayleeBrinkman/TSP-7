@@ -1,4 +1,4 @@
-from result import Result
+from wiki_scrapper.result import Result
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
