@@ -1,11 +1,11 @@
 # testing for each individual method compiled into one file
 # author: andrew anderson
 # last updated 4/9/2023
-from src.wiki_scrapper.compareLinks import *
-from src.wiki_scrapper.filter import *
-from src.wiki_scrapper.page_getter import *
-from src.wiki_scrapper.ScrappeAndCompare import *
-from src.wiki_scrapper.search_results import *
+from wiki_scrapper.compareLinks import *
+from wiki_scrapper.filter import *
+from wiki_scrapper.page_getter import *
+from wiki_scrapper.ScrappeAndCompare import *
+from wiki_scrapper.search_results import *
 
 
 def main():
