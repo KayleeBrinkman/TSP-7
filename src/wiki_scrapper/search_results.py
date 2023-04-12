@@ -2,8 +2,8 @@ import wikipediaapi
 import re
 import difflib
 
-from src.wiki_scrapper.page_getter import *
-from src.wiki_scrapper.ScrappeAndCompare import *
+from page_getter import *
+from ScrappeAndCompare import *
 
 
 def related_pages(title: str, count=None) -> list:
