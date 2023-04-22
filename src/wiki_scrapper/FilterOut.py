@@ -11,8 +11,7 @@ def main():
     print(finalText)
 
 def filterOutCommonWords(textList):
-    print(f"DIR={os.getcwd()}")
-    commonWords = 'C:\\Users\\Caleb\\Desktop\\Python Programs\\TSP-7\\src\\wiki_scrapper\\resources\\commonwords.txt'
+    commonWords = f'{os.path.dirname(__file__)}\\resources\\commonwords.txt'
     commonList = wikifilter.read_text(commonWords)
 
     copyOfTextList = [ele for ele in textList]

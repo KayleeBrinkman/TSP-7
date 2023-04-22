@@ -60,6 +60,7 @@ class scrapperGUI(ctk.CTk):
         self.searchButton.grid(row=0, column=1, sticky='nws')
         self.resultsAmountLabel.grid(row=1, column=0, sticky='nes')
         self.resultsAmountEntry.grid(row=1, column=1, sticky='news')
+        self.statLabel.grid(row=0, column=2, sticky='news')
 
         # Widget callbacks
         self.searchtermEntry.bind("<FocusIn>", self.defaultText)

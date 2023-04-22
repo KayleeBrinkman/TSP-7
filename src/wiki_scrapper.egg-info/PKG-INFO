@@ -7,7 +7,7 @@ Author-email: evanderm@mtu.edu, aanderso@mtu.edu, jjschuil@mtu.edu, cmbrinkm@mtu
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
-Requires-Python: >=3.6
+Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
@@ -30,7 +30,7 @@ pip install --upgrade pip setuptools wheel -y
   - https://gitforwindows.org/
 - Install wiki-scrapper and all dependencies using pip install.
 ```bash
-pip install git+https://github.com/KayleeBrinkman/TSP-7.git@master --upgrade --force-reinstall
+pip install git+https://github.com/KayleeBrinkman/TSP-7.git --upgrade --force-reinstall
 ```
 - wiki-scrapper may also be installed from the compiled tar file "dist/wiki_scrapper-x.x.x.tar.gz"
 ```bash
