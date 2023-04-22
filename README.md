@@ -17,7 +17,7 @@ pip install --upgrade pip setuptools wheel -y
   - https://gitforwindows.org/
 - Install wiki-scrapper and all dependencies using pip install.
 ```bash
-pip install git+https://github.com/KayleeBrinkman/TSP-7.git@master --upgrade --force-reinstall
+pip install git+https://github.com/KayleeBrinkman/TSP-7.git --upgrade --force-reinstall
 ```
 - wiki-scrapper may also be installed from the compiled tar file "dist/wiki_scrapper-x.x.x.tar.gz"
 ```bash
