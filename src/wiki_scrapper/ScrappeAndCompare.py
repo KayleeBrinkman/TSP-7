@@ -5,7 +5,6 @@ import wiki_scrapper.FilterOut as wikiFilterOut
 import wiki_scrapper.compareLinks as wikiSameLinks
 import re
 import difflib
-import result
 
 def main():
     originalTitle = 'Anime'
