@@ -1,9 +1,10 @@
 import wikipediaapi
 import re
 import difflib
-
+import result
 from wiki_scrapper.page_getter import *
 from wiki_scrapper.ScrappeAndCompare import *
+
 
 
 def related_pages(title: str, count=None) -> list:
@@ -13,6 +14,18 @@ def related_pages(title: str, count=None) -> list:
     :return: List of pages related to the original search, sorted by similarity score
     """
 
+    r = result
+    mainWiki = r.Result
+    mainWiki.set_title(title)
+    prevSearch = mainWiki.check_title('storetest.txt', mainWiki.get_title())
+    if 'dict_items' in prevSearch:
+        i = 12
+        prevRelated = []
+        r = re.compile("[^)]*")
+        m = r.findall(prevSearch)
+        prevRelated = m
+        prevRelated.sort(key=lambda x: x[1], reverse=True)
+        return prevRelated
     info = get_info(title)
     related = []
     for related_page in info['related']:
@@ -24,6 +37,12 @@ def related_pages(title: str, count=None) -> list:
     related.sort(key = lambda x: x[1], reverse=True)
     if count:
         related = related[:count]
+    tempDict = {}
+    for page in related:
+        tempDict[page[0]] = page[1]
+    mainWiki.set_articles(tempDict)
+    mainWiki.store_result('storetest.txt')
+
     return related
 
 
