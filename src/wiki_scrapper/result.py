@@ -42,7 +42,7 @@ class Result:
                 if line.strip() == title:
                     found = True
                     continue
-            if(not found):
+            if not found:
                 return "Not found"
             else:
                 return "error"
