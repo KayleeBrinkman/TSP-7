@@ -1,7 +1,8 @@
 import wikipediaapi
 import re
 import difflib
-import result
+
+import wiki_scrapper.result
 from wiki_scrapper.page_getter import *
 from wiki_scrapper.ScrappeAndCompare import *
 
