@@ -37,7 +37,6 @@ class Result:
         with open(file_path, 'r') as f:
             found = False
             for line in f:
-                print(line)
                 if found:
                     return line
                 if line.strip() == title:
