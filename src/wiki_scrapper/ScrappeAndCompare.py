@@ -1,8 +1,8 @@
 # Import package
 import wikipediaapi
-import src.wiki_scrapper.filter as wikifilter
-import src.wiki_scrapper.FilterOut as wikiFilterOut
-import src.wiki_scrapper.compareLinks as wikiSameLinks
+import wiki_scrapper.filter as wikifilter
+import wiki_scrapper.FilterOut as wikiFilterOut
+import wiki_scrapper.compareLinks as wikiSameLinks
 import re
 import difflib
 import result
@@ -37,19 +37,17 @@ def scrappe(originalTitle, title):
 
     # COMPARE THE TWO TEXTS, WORD BY WORD
     matcher = difflib.SequenceMatcher(a=textOriginal, b=textOther)
-    counter = 0
-    for match in matcher.get_matching_blocks():
-        counter = counter+1
+    score = matcher.real_quick_ratio()
+    # counter = 0
+    # for match in matcher.get_matching_blocks():
+    #     counter = counter+1
 
-    score = counter/len(textOther)*100      # score represents the percentage of words in article b that match article a
+    # score = counter/len(textOther)*100      # score represents the percentage of words in article b that match article a
     
     titleOgList = originalTitle.split()
     titleList = title.split()
     matcherTitle = difflib.SequenceMatcher(a=titleOgList, b=titleList)
-    counterTitle = 1
-    for match in matcherTitle.get_matching_blocks():
-        counterTitle = counterTitle+.05
-    score = score*counterTitle
+    score *= matcherTitle.real_quick_ratio() + 1
     
     sameLinks = wikiSameLinks.comapreLinks(originalTitle, title)
     score = score*(1+len(sameLinks)*0.02)

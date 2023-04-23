@@ -82,10 +82,6 @@ def get_info(title: str) -> dict:
     if title[:5] == 'https':
         title = title[title.find('wiki/') + 5:]
     info['title'] = title
-    info['summary'] = get_summary(title)
-    info['photos'] = get_photos(title)
     info['links'] = get_links(title)
     info['related'] = get_related(title)
     return info
-
-get_info('https://en.wikipedia.org/wiki/Apple')

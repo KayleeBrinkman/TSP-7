@@ -2,3 +2,4 @@ numpy
 tk
 requests
 wikipedia-api
+customtkinter

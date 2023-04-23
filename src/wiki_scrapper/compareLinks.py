@@ -6,15 +6,10 @@ def main():
     print(same_links)
 
 def comapreLinks(title1, title2):
-    links1 = pageGetter.get_links(title1)
-    links2 = pageGetter.get_links(title2)
+    links1 = set(pageGetter.get_links(title1))
+    links2 = set(pageGetter.get_links(title2))
 
-    sameLinks = set()
-    for x in links1:
-        for y in links2:
-            if x == y:
-                sameLinks.add(x)
-    return sameLinks
+    return links1.intersection(links2)
 
 if __name__ == "__main__":
     main()

@@ -19,6 +19,7 @@ import customtkinter as ctk
 import wiki_scrapper.search_results as wikiresults
 import wikipediaapi
 import webbrowser
+import time
 
 # Web Scrapper GUI Main Class
 class scrapperGUI(ctk.CTk):
@@ -38,6 +39,7 @@ class scrapperGUI(ctk.CTk):
         self.wiki = wikipediaapi.Wikipedia('en')
         self.searchterm = tk.StringVar(value="Enter Wiki Title...")
         self.resultsAmount = tk.StringVar(value="5")
+        self.searchStat = tk.StringVar(value="")
 
         # Frames
         self.frm_results = ctk.CTkFrame(master=self)
@@ -51,12 +53,14 @@ class scrapperGUI(ctk.CTk):
         self.resultsAmountLabel = ctk.CTkLabel(master=self.frm_searchTools, text="Number of results: ")
         self.resultsAmountEntry = ctk.CTkComboBox(master=self.frm_searchTools, variable=self.resultsAmount,
                                                   values=['1', '5', '10', '20'])
+        self.statLabel          = ctk.CTkLabel(master=self.frm_searchTools, textvariable=self.searchStat)
 
         # Arrange widgets
         self.searchtermEntry.grid(row=0, column=0, sticky='news')
         self.searchButton.grid(row=0, column=1, sticky='nws')
         self.resultsAmountLabel.grid(row=1, column=0, sticky='nes')
         self.resultsAmountEntry.grid(row=1, column=1, sticky='news')
+        self.statLabel.grid(row=0, column=2, sticky='news')
 
         # Widget callbacks
         self.searchtermEntry.bind("<FocusIn>", self.defaultText)
@@ -104,7 +108,12 @@ class scrapperGUI(ctk.CTk):
             return
 
         # Find related pages
+        tic = time.perf_counter()
         self.relatedPages = wikiresults.related_pages(self.searchterm.get(), int(self.resultsAmount.get()))
+        toc = time.perf_counter()
+
+        # Update performance label
+        self.searchStat.set(f"Found {self.resultsAmount.get()} results in {toc - tic:0.4f} seconds")
 
         # Display results
         self.updateResults()
