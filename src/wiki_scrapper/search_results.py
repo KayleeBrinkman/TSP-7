@@ -21,10 +21,10 @@ def related_pages(title: str, count=None) -> list:
     storeTest = f'{os.path.dirname(__file__)}\\resources\\storetest.txt'
     prevSearch = mainWiki.check_title(storeTest, mainWiki.get_title())
     if 'dict_items' in prevSearch:
-        i = 12
         prevRelated = []
         r = re.compile("[^)]*")
         m = r.findall(prevSearch)
+        print(m)
         prevRelated = m
         prevRelated.sort(key=lambda x: x[1], reverse=True)
         return prevRelated
