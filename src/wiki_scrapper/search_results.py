@@ -2,7 +2,7 @@ import wikipediaapi
 import re
 import difflib
 
-import wiki_scrapper.result
+from wiki_scrapper.result import Result
 from wiki_scrapper.page_getter import *
 from wiki_scrapper.ScrappeAndCompare import *
 
@@ -15,8 +15,7 @@ def related_pages(title: str, count=None) -> list:
     :return: List of pages related to the original search, sorted by similarity score
     """
 
-    r = result
-    mainWiki = r.Result
+    mainWiki = Result
     mainWiki.set_title(title)
     prevSearch = mainWiki.check_title('storetest.txt', mainWiki.get_title())
     if 'dict_items' in prevSearch:
