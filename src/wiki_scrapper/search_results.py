@@ -28,7 +28,7 @@ def related_pages(title: str, count=None) -> list:
             start_index = prevSearch.find("(", start_index)
             if start_index == -1:
                 break
-            start_index += 1
+            start_index += 3
             end_index = prevSearch.find(",", start_index) - 1
             prevTitle = prevSearch[start_index+1:end_index]
             
