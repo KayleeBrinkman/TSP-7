@@ -35,7 +35,7 @@ def scrappe(originalTitle, title):
 
     # COMPARE THE TWO TEXTS, WORD BY WORD
     matcher = difflib.SequenceMatcher(a=textOriginal, b=textOther)
-    score = matcher.ratio()
+    score = matcher.real_quick_ratio()
     # counter = 0
     # for match in matcher.get_matching_blocks():
     #     counter = counter+1
