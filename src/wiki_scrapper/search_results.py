@@ -22,13 +22,13 @@ def related_pages(title: str, count=None) -> list:
     prevSearch = mainWiki.check_title(storeTest, mainWiki.get_title())
     if 'dict_items' in prevSearch:
         prevRelated = []
-        start_index = 0
+        start_index = prevSearch.find("(") + 1
         prevTitle = ''
         while True:
             start_index = prevSearch.find("(", start_index)
             if start_index == -1:
                 break
-            start_index += 3
+            start_index += 1
             end_index = prevSearch.find(",", start_index) - 1
             prevTitle = prevSearch[start_index+1:end_index]
             
