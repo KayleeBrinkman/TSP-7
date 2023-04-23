@@ -25,10 +25,11 @@ def related_pages(title: str, count=None) -> list:
         start_index = 0
         prevTitle = ''
         while True:
-            start_index = prevSearch.find("'", start_index)
+            start_index = prevSearch.find("(", start_index)
             if start_index == -1:
                 break
-            end_index = prevSearch.find("'", start_index + 1)
+            start_index += 1
+            end_index = prevSearch.find(",", start_index) - 1
             prevTitle = prevSearch[start_index+1:end_index]
             
             # Getting score associated with title
