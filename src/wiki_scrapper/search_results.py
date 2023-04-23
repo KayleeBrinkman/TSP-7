@@ -34,7 +34,7 @@ def related_pages(title: str, count=None) -> list:
             # Getting score associated with title
             start_index = end_index + 3
             end_index = prevSearch.find(")", start_index)
-            prevScore = int(prevSearch[start_index:end_index])
+            prevScore = float(prevSearch[start_index:end_index])
             prevRelated.append((prevTitle, prevScore))
         return prevRelated
     info = get_info(title)
