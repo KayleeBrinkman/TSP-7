@@ -22,11 +22,7 @@ def related_pages(title: str, count=None) -> list:
     prevSearch = mainWiki.check_title(storeTest, mainWiki.get_title())
     if 'dict_items' in prevSearch:
         prevRelated = []
-        r = re.compile("[^)]*")
-        m = r.findall(prevSearch)
-        print(m)
-        prevRelated = m
-        prevRelated.sort(key=lambda x: x[1], reverse=True)
+        print(prevSearch)
         return prevRelated
     info = get_info(title)
     related = []
