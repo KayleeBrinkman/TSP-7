@@ -5,6 +5,7 @@ import src.wiki_scrapper.FilterOut as wikiFilterOut
 import src.wiki_scrapper.compareLinks as wikiSameLinks
 import re
 import difflib
+import result
 
 def main():
     originalTitle = 'Anime'
@@ -17,6 +18,7 @@ def scrappe(originalTitle, title):
     wiki = wikipediaapi.Wikipedia('en')
     wiki1 = wiki.page(originalTitle)
     wiki2 = wiki.page(title)
+
 
     # EXTRACT THE TEXT FROM THE WIKI PAGE
     # original text
