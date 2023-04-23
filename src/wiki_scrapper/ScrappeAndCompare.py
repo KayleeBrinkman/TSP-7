@@ -35,11 +35,12 @@ def scrappe(originalTitle, title):
 
     # COMPARE THE TWO TEXTS, WORD BY WORD
     matcher = difflib.SequenceMatcher(a=textOriginal, b=textOther)
-    counter = 0
-    for match in matcher.get_matching_blocks():
-        counter = counter+1
+    score = matcher.ratio()
+    # counter = 0
+    # for match in matcher.get_matching_blocks():
+    #     counter = counter+1
 
-    score = counter/len(textOther)*100      # score represents the percentage of words in article b that match article a
+    # score = counter/len(textOther)*100      # score represents the percentage of words in article b that match article a
     
     titleOgList = originalTitle.split()
     titleList = title.split()

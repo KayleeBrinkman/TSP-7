@@ -87,5 +87,3 @@ def get_info(title: str) -> dict:
     info['links'] = get_links(title)
     info['related'] = get_related(title)
     return info
-
-get_info('https://en.wikipedia.org/wiki/Apple')
