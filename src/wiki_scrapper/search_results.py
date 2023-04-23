@@ -47,13 +47,13 @@ def related_pages(title: str, count=None) -> list:
         related.append((related_title, score))
     # Sort by similarity score
     related.sort(key = lambda x: x[1], reverse=True)
-    if count:
-        related = related[:count]
     tempDict = {}
     for page in related:
         tempDict[page[0]] = page[1]
     mainWiki.set_articles(tempDict)
     mainWiki.store_result(storeTest)
+    if count:
+        related = related[:count]
 
     return related
 
