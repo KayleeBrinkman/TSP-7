@@ -16,7 +16,9 @@ def related_pages(title: str, count=None) -> list:
     info = get_info(title)
     related = []
     for related_page in info['related']:
+        print(f"Getting info on {related_page}")
         related_info = get_info(related_page)
+        print(f"Done getting info on {related_page}")
         related_title = related_info['title']
         print(f"Scoring {related_title}")
         score = scrappe(title, related_title)
