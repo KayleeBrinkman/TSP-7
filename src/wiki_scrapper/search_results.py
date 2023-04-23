@@ -1,6 +1,7 @@
 import wikipediaapi
 import re
 import difflib
+import os
 
 from wiki_scrapper.result import Result
 from wiki_scrapper.page_getter import *
@@ -17,7 +18,8 @@ def related_pages(title: str, count=None) -> list:
 
     mainWiki = Result()
     mainWiki.set_title(title)
-    prevSearch = mainWiki.check_title('storetest.txt', mainWiki.get_title())
+    storeTest = f'{os.path.dirname(__file__)}\\resources\\storetest.txt'
+    prevSearch = mainWiki.check_title(storeTest, mainWiki.get_title())
     if 'dict_items' in prevSearch:
         i = 12
         prevRelated = []
@@ -41,7 +43,7 @@ def related_pages(title: str, count=None) -> list:
     for page in related:
         tempDict[page[0]] = page[1]
     mainWiki.set_articles(tempDict)
-    mainWiki.store_result('storetest.txt')
+    mainWiki.store_result(storeTest)
 
     return related
 

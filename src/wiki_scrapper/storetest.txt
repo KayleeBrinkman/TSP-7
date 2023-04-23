@@ -1,9 +1,0 @@
-
-test title
-dict_items([('apple', 10), ('orange', 20), ('banana', 5)])
-
-test title
-dict_items([('apple', 10), ('orange', 20), ('banana', 5)])
-
-test title
-dict_items([('apple', 10), ('orange', 20), ('banana', 5)])
