@@ -15,7 +15,7 @@ def related_pages(title: str, count=None) -> list:
     :return: List of pages related to the original search, sorted by similarity score
     """
 
-    mainWiki = Result
+    mainWiki = Result()
     mainWiki.set_title(title)
     prevSearch = mainWiki.check_title('storetest.txt', mainWiki.get_title())
     if 'dict_items' in prevSearch:

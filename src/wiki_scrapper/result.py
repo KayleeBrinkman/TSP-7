@@ -1,11 +1,7 @@
 
 class Result:
-    searched_title = ""
 
-    #keys will be article titles, values their similarity score the original article
-    related_articles = {}
-
-    def __init__(self, title, articles):
+    def __init__(self, title=None, articles=None):
         self.searched_title = title
         self.related_articles = articles
 
