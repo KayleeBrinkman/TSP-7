@@ -45,10 +45,7 @@ def scrappe(originalTitle, title):
     titleOgList = originalTitle.split()
     titleList = title.split()
     matcherTitle = difflib.SequenceMatcher(a=titleOgList, b=titleList)
-    counterTitle = 1
-    for match in matcherTitle.get_matching_blocks():
-        counterTitle = counterTitle+.05
-    score = score*counterTitle
+    score *= matcherTitle.real_quick_ratio() + 1
     
     sameLinks = wikiSameLinks.comapreLinks(originalTitle, title)
     score = score*(1+len(sameLinks)*0.02)
